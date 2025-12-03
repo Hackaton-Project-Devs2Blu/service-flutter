@@ -29,6 +29,10 @@ void main() {
               ChatController(repository: context.read<ChatRepository>()),
           update: (_, repository, __) => ChatController(repository: repository),
         ),
+
+        Provider(create: (_) => KnowledgeBaseService()),
+        Provider(create: (context) => KnowledgeBaseRepository()),
+        ChangeNotifierProvider(create: (_) => KnowledgeBaseController()),
       ],
       child: const MyApp(),
     ),
