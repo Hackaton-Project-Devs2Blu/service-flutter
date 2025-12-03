@@ -1,10 +1,9 @@
-FROM ghcr.io/cirruslabs/flutter:stable AS builder
+FROM --platform=$BUILDPLATFORM ghcr.io/cirruslabs/flutter:stable AS builder
 WORKDIR /app
-COPY pubspec.* ./
+COPY chatbot_frontend/pubspec.* ./
 RUN flutter pub get
-COPY . .
+COPY chatbot_frontend/ .
 RUN flutter build web --release
-
 FROM nginx:alpine
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
