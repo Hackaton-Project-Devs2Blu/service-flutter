@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../controllers/knowledge_base_controller.dart';
 import '../widgets/knowledge_card.dart';
 import '../widgets/knowledge_form.dart';
+import '../../chatbot/views/chat_page.dart';
 
 class KBListPage extends StatefulWidget {
   const KBListPage({super.key});
@@ -26,8 +27,40 @@ class _KBListPageState extends State<KBListPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("CapivarIA - Admin"),
-        backgroundColor: Colors.green,
+        backgroundColor: Color(0xfff597B3E),
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: Colors.white24, //ajustar cor
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                'assets/imagens/capivaria.jpeg',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+        title: const Text(
+          "CapivarIA - Admin",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.chat),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const ChatPage()),
+              );
+            },
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.green,
