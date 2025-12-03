@@ -16,15 +16,9 @@ class _TelaLoginState extends State<TelaLogin> {
   final emailController = TextEditingController();
   final senhaController = TextEditingController();
 
-  // ======================
-  // LOGIN DO ADMIN
-  // ======================
   final String emailAdmin = "admin@gmail.com";
   final String senhaAdmin = "123456";
 
-  // ======================
-  // VALIDAÇÃO DO LOGIN
-  // ======================
   void validarLogin() {
     if (emailController.text.trim() == emailAdmin &&
         senhaController.text.trim() == senhaAdmin) {
@@ -32,7 +26,6 @@ class _TelaLoginState extends State<TelaLogin> {
         senhaErro = false;
       });
 
-      // ✅ NAVEGA PARA SUA ChatPage REAL
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const ChatPage()),
@@ -66,8 +59,20 @@ class _TelaLoginState extends State<TelaLogin> {
                 controller: emailController,
                 decoration: InputDecoration(
                   hintText: "seuemail@gmail.com",
-                  border: OutlineInputBorder(
+
+                  // Borda padrão (cinza)
+                  enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Colors.grey),
+                  ),
+
+                  // Borda quando clicar (foco)
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: Color(0xFF57733C),
+                      width: 2,
+                    ),
                   ),
                 ),
               ),
@@ -83,18 +88,25 @@ class _TelaLoginState extends State<TelaLogin> {
                 controller: senhaController,
                 obscureText: !mostrarSenha,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(
+                  hintText: "Digite sua senha",
+
+                  // Borda padrão (cinza) OU vermelha se erro
+                  enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide(
                       color: senhaErro ? Colors.red : Colors.grey,
                     ),
                   ),
+
+                  // Borda quando clicar (foco)
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide(
-                      color: senhaErro ? Colors.red : Colors.blue,
+                      color: senhaErro ? Colors.red : const Color(0xFF57733C),
+                      width: 2,
                     ),
                   ),
+
                   suffixIcon: IconButton(
                     icon: Icon(
                       mostrarSenha ? Icons.visibility : Icons.visibility_off,
@@ -111,14 +123,14 @@ class _TelaLoginState extends State<TelaLogin> {
               const SizedBox(height: 6),
 
               // ======================
-              // ERRO CONDICIONAL
+              // ERRO
               // ======================
               if (senhaErro)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
                     Text(
-                      "senha incorreta",
+                      "Senha ou email incorretos",
                       style: TextStyle(color: Colors.red, fontSize: 13),
                     ),
                     Text(
@@ -155,7 +167,7 @@ class _TelaLoginState extends State<TelaLogin> {
                 child: ElevatedButton(
                   onPressed: validarLogin,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF4E8C3A),
+                    backgroundColor: const Color(0xFF57733C),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -170,7 +182,7 @@ class _TelaLoginState extends State<TelaLogin> {
               const SizedBox(height: 40),
 
               // ======================
-              // DIVIDER "OU"
+              // DIVISOR "OU"
               // ======================
               Row(
                 children: const [
