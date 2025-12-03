@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../controllers/chat_controller.dart';
 import '../widgets/chat_message.dart';
+import '../../adm/views/adm_page.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -43,6 +43,17 @@ class _ChatPageState extends State<ChatPage> {
           "CapivarIA",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.ad_units_rounded),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const KBListPage()),
+              );
+            },
+          ),
+        ],
       ),
       body: Column(
         children: [
