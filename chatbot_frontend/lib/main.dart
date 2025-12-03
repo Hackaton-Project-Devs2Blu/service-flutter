@@ -6,6 +6,10 @@ import 'src/features/chatbot/repositories/chat_repository.dart';
 import 'src/features/chatbot/repositories/chat_repository_impl.dart';
 import 'src/features/chatbot/services/ai_service.dart';
 import 'src/features/chatbot/controllers/chat_controller.dart';
+import 'src/features/adm/views/adm_page.dart';
+import 'src/features/adm/controllers/knowledge_base_controller.dart';
+import 'src/features/adm/repositories/knowledge_base_repository.dart';
+import 'src/features/adm/services/knowledge_base_service.dart';
 
 void main() {
   runApp(
@@ -35,7 +39,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'CapivarIA',
-      home: const ChatPage(), //provisório
+      home: const KBListPage(), //provisório
     );
   }
 }
