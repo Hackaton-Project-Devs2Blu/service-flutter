@@ -1,4 +1,4 @@
-FROM ghcr.io/cirruslabs/flutter:stable AS builder
+FROM --platform=$BUILDPLATFORM ghcr.io/cirruslabs/flutter:stable AS builder
 WORKDIR /app
 COPY chatbot_frontend/pubspec.* ./
 RUN flutter pub get
