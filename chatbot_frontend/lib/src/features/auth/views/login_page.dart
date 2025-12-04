@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:chatbot_frontend/src/features/chatbot/views/chat_page.dart';
-import 'package:chatbot_frontend/src/features/auth/views/register_pe0age.dart';
+import 'package:chatbot_frontend/src/features/auth/views/register_peage.dart';
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({super.key});
