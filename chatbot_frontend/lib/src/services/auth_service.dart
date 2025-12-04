@@ -7,12 +7,12 @@ class AuthService {
   final String? baseUrl;
   final http.Client _client;
 
-  AuthService({this.baseUrl, http.Client? client}) : _client = client ?? http.Client();
+  AuthService({this.baseUrl, http.Client? client})
+    : _client = client ?? http.Client();
 
-  /// Chamada real ao backend. Retorna AuthModel em caso de sucesso ou null.
+  /// Tenta login contra a API; se baseUrl for nulo, usa fakeLogin.
   Future<AuthModel?> login(String email, String password) async {
     if (baseUrl == null) {
-      // se não houver baseUrl, usa fake (útil para desenvolvimento)
       return fakeLogin(email, password);
     }
 

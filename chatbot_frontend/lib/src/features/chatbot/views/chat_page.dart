@@ -20,7 +20,7 @@ class _ChatPageState extends State<ChatPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xfff597B3E),
+        backgroundColor: Color(0xfff597b3e),
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
