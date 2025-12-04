@@ -19,6 +19,8 @@ class _TelaLoginState extends State<TelaLogin> {
   final String emailAdmin = "admin@gmail.com";
   final String senhaAdmin = "123456";
 
+  static const Color primaryGreen = Color(0xFF57733C);
+
   void validarLogin() {
     if (emailController.text.trim() == emailAdmin &&
         senhaController.text.trim() == senhaAdmin) {
@@ -57,22 +59,20 @@ class _TelaLoginState extends State<TelaLogin> {
               const SizedBox(height: 6),
               TextField(
                 controller: emailController,
+                cursorColor: primaryGreen, // seta o cursor na cor desejada
                 decoration: InputDecoration(
                   hintText: "seuemail@gmail.com",
 
-                  // Borda padrão (cinza)
+                  // Borda padrão -> agora verde
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: Colors.grey),
+                    borderSide: const BorderSide(color: primaryGreen),
                   ),
 
                   // Borda quando clicar (foco)
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(
-                      color: Color(0xFF57733C),
-                      width: 2,
-                    ),
+                    borderSide: const BorderSide(color: primaryGreen, width: 2),
                   ),
                 ),
               ),
@@ -87,14 +87,15 @@ class _TelaLoginState extends State<TelaLogin> {
               TextField(
                 controller: senhaController,
                 obscureText: !mostrarSenha,
+                cursorColor: primaryGreen, // cursor verde
                 decoration: InputDecoration(
                   hintText: "Digite sua senha",
 
-                  // Borda padrão (cinza) OU vermelha se erro
+                  // Borda padrão (verde) OU vermelha se erro
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide(
-                      color: senhaErro ? Colors.red : Colors.grey,
+                      color: senhaErro ? Colors.red : primaryGreen,
                     ),
                   ),
 
@@ -102,7 +103,7 @@ class _TelaLoginState extends State<TelaLogin> {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide(
-                      color: senhaErro ? Colors.red : const Color(0xFF57733C),
+                      color: senhaErro ? Colors.red : primaryGreen,
                       width: 2,
                     ),
                   ),
@@ -110,6 +111,7 @@ class _TelaLoginState extends State<TelaLogin> {
                   suffixIcon: IconButton(
                     icon: Icon(
                       mostrarSenha ? Icons.visibility : Icons.visibility_off,
+                      color: primaryGreen, // ícone também na cor desejada
                     ),
                     onPressed: () {
                       setState(() {
@@ -167,7 +169,7 @@ class _TelaLoginState extends State<TelaLogin> {
                 child: ElevatedButton(
                   onPressed: validarLogin,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF57733C),
+                    backgroundColor: primaryGreen,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
