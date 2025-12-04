@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:chatbot_frontend/src/features/chatbot/views/chat_page.dart';
-import '../../chatbot/views/chat_page.dart';
+import 'package:chatbot_frontend/src/features/auth/views/register_pe0age.dart';
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({super.key});
@@ -52,24 +52,17 @@ class _TelaLoginState extends State<TelaLogin> {
             children: [
               const SizedBox(height: 60),
 
-              // ======================
-              // EMAIL
-              // ======================
               const Text("Seu email"),
               const SizedBox(height: 6),
               TextField(
                 controller: emailController,
-                cursorColor: primaryGreen, // seta o cursor na cor desejada
+                cursorColor: primaryGreen,
                 decoration: InputDecoration(
                   hintText: "seuemail@gmail.com",
-
-                  // Borda padrão -> agora verde
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(color: primaryGreen),
                   ),
-
-                  // Borda quando clicar (foco)
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(color: primaryGreen, width: 2),
@@ -79,27 +72,19 @@ class _TelaLoginState extends State<TelaLogin> {
 
               const SizedBox(height: 20),
 
-              // ======================
-              // SENHA
-              // ======================
               const Text("Senha"),
               const SizedBox(height: 6),
               TextField(
                 controller: senhaController,
                 obscureText: !mostrarSenha,
-                cursorColor: primaryGreen, // cursor verde
+                cursorColor: primaryGreen,
                 decoration: InputDecoration(
                   hintText: "Digite sua senha",
-
-                  // Borda padrão (verde) OU vermelha se erro
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide(
-                      color: senhaErro ? Colors.red : primaryGreen,
-                    ),
+                        color: senhaErro ? Colors.red : primaryGreen),
                   ),
-
-                  // Borda quando clicar (foco)
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide(
@@ -107,11 +92,10 @@ class _TelaLoginState extends State<TelaLogin> {
                       width: 2,
                     ),
                   ),
-
                   suffixIcon: IconButton(
                     icon: Icon(
                       mostrarSenha ? Icons.visibility : Icons.visibility_off,
-                      color: primaryGreen, // ícone também na cor desejada
+                      color: primaryGreen,
                     ),
                     onPressed: () {
                       setState(() {
@@ -124,9 +108,6 @@ class _TelaLoginState extends State<TelaLogin> {
 
               const SizedBox(height: 6),
 
-              // ======================
-              // ERRO
-              // ======================
               if (senhaErro)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -160,9 +141,6 @@ class _TelaLoginState extends State<TelaLogin> {
 
               const SizedBox(height: 30),
 
-              // ======================
-              // BOTÃO ENTRAR
-              // ======================
               SizedBox(
                 width: double.infinity,
                 height: 52,
@@ -183,9 +161,6 @@ class _TelaLoginState extends State<TelaLogin> {
 
               const SizedBox(height: 40),
 
-              // ======================
-              // DIVISOR "OU"
-              // ======================
               Row(
                 children: const [
                   Expanded(child: Divider()),
@@ -200,22 +175,32 @@ class _TelaLoginState extends State<TelaLogin> {
               const SizedBox(height: 25),
 
               // ======================
-              // CRIAR CONTA
+              // ➜ REDIRECIONA PARA REGISTER PAGE
               // ======================
               Center(
-                child: RichText(
-                  text: const TextSpan(
-                    text: "Não tem uma conta? ",
-                    style: TextStyle(color: Colors.grey, fontSize: 14),
-                    children: [
-                      TextSpan(
-                        text: "Criar uma",
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
-                        ),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const RegisterPage(),
                       ),
-                    ],
+                    );
+                  },
+                  child: RichText(
+                    text: const TextSpan(
+                      text: "Não tem uma conta? ",
+                      style: TextStyle(color: Colors.grey, fontSize: 14),
+                      children: [
+                        TextSpan(
+                          text: "Criar uma",
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

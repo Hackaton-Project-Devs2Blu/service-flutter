@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:chatbot_frontend/src/features/auth/views/login_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -24,20 +25,12 @@ class _RegisterPageState extends State<RegisterPage> {
   Color get senhaForcaColor {
     final s = senhaController.text;
     if (s.isEmpty) return Colors.transparent;
-    if (s.length < 8) return const Color(0xFFFFC107); // amarelo
+    if (s.length < 8) return const Color(0xFFFFC107);
     if (s.length < 12) return Colors.orange;
-    return const Color(0xFF57733C); // verde forte
+    return const Color(0xFF57733C);
   }
 
   static const Color primaryGreen = Color(0xFF57733C);
-
-  @override
-  void dispose() {
-    nomeController.dispose();
-    emailController.dispose();
-    senhaController.dispose();
-    super.dispose();
-  }
 
   InputDecoration baseDecoration({required String hint, Widget? suffix}) {
     return InputDecoration(
@@ -55,6 +48,13 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
+  void criarConta() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const TelaLogin()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +66,6 @@ class _RegisterPageState extends State<RegisterPage> {
             children: [
               const SizedBox(height: 8),
 
-              // Seu nome
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -83,7 +82,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
               const SizedBox(height: 18),
 
-              // Seu email
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -101,7 +99,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
               const SizedBox(height: 18),
 
-              // Criar senha
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -129,8 +126,6 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
 
               const SizedBox(height: 6),
-
-              // senha fraca / forte
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -146,14 +141,11 @@ class _RegisterPageState extends State<RegisterPage> {
 
               const SizedBox(height: 20),
 
-              // Botão Criar conta
               SizedBox(
                 width: double.infinity,
                 height: 48,
                 child: ElevatedButton(
-                  onPressed: () {
-                    // implementar ação de criar conta
-                  },
+                  onPressed: criarConta,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryGreen,
                     shape: RoundedRectangleBorder(
@@ -178,5 +170,3 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 }
-
-// filepath: c:\repo\service-flutter\chatbot_frontend\lib\src\features\auth\views\register_page.dart
