@@ -48,64 +48,92 @@ class _TelaLoginState extends State<TelaLogin> {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 60),
-
-              const Text("Seu email"),
-              const SizedBox(height: 6),
-              TextField(
-                controller: emailController,
-                cursorColor: primaryGreen,
-                decoration: InputDecoration(
-                  hintText: "seuemail@gmail.com",
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: primaryGreen),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: primaryGreen, width: 2),
-                  ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  height: 80,
+                  'assets/imagens/capivaria.jpeg',
+                  fit: BoxFit.cover,
                 ),
               ),
-
+              SizedBox(height: 20),
+              const Text(
+                "Bem-vindo ao Patricia",
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              ),
+              const Text(
+                'Tire suas dúvidas com o chatbot inteligente', //trocar nome
+                style: TextStyle(fontSize: 16, color: Colors.grey),
+              ),
               const SizedBox(height: 20),
+              Align(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text("Seu email"),
+                    const SizedBox(height: 6),
+                    TextField(
+                      controller: emailController,
+                      cursorColor: primaryGreen,
+                      decoration: InputDecoration(
+                        hintText: "seuemail@gmail.com",
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(color: primaryGreen),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: primaryGreen,
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                    ),
 
-              const Text("Senha"),
-              const SizedBox(height: 6),
-              TextField(
-                controller: senhaController,
-                obscureText: !mostrarSenha,
-                cursorColor: primaryGreen,
-                decoration: InputDecoration(
-                  hintText: "Digite sua senha",
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(
-                        color: senhaErro ? Colors.red : primaryGreen),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(
-                      color: senhaErro ? Colors.red : primaryGreen,
-                      width: 2,
+                    const SizedBox(height: 20),
+
+                    const Text("Senha"),
+                    const SizedBox(height: 6),
+                    TextField(
+                      controller: senhaController,
+                      obscureText: !mostrarSenha,
+                      cursorColor: primaryGreen,
+                      decoration: InputDecoration(
+                        hintText: "Digite sua senha",
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                            color: senhaErro ? Colors.red : primaryGreen,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                            color: senhaErro ? Colors.red : primaryGreen,
+                            width: 2,
+                          ),
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            mostrarSenha
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: primaryGreen,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              mostrarSenha = !mostrarSenha;
+                            });
+                          },
+                        ),
+                      ),
                     ),
-                  ),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      mostrarSenha ? Icons.visibility : Icons.visibility_off,
-                      color: primaryGreen,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        mostrarSenha = !mostrarSenha;
-                      });
-                    },
-                  ),
+                  ],
                 ),
               ),
-
               const SizedBox(height: 6),
 
               if (senhaErro)
