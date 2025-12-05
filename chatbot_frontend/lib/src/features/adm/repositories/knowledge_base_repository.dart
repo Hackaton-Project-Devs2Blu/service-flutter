@@ -3,10 +3,10 @@ import 'package:http/http.dart' as http;
 import '../models/knowledge_base_model.dart';
 
 class KnowledgeBaseRepository {
-  final String baseUrl = "http://localhost:"; //ADD PORTA
+  final String baseUrl = ""; //ADD PORTA
 
   Future<List<KnowledgeBase>> getAll() async {
-    final res = await http.get(Uri.parse(baseUrl));
+    final res = await http.get(Uri.parse("$baseUrl/knowledgebase"));
 
     final List data = jsonDecode(res.body);
     return data.map((e) => KnowledgeBase.fromJson(e)).toList();

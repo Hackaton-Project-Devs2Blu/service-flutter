@@ -26,47 +26,101 @@ class _KBListPageState extends State<KBListPage> {
     final controller = context.watch<KnowledgeBaseController>();
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xfff597B3E),
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.white24, //ajustar cor
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                'assets/imagens/capivaria.jpeg',
-                fit: BoxFit.cover,
+      backgroundColor: Color(0xFFFFFFFF),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: const BoxDecoration(color: Color(0xfff597B3E)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.asset(
+                      'assets/imagens/capivaria.jpeg',
+                      width: 56,
+                      height: 56,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  const Text(
+                    'Patricia',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
+            ListTile(
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text('Sair'),
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed('/');
+              },
+            ),
+          ],
         ),
-        title: const Text(
-          "CapivarIA - Admin",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.chat),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const ChatPage()),
-              );
-            },
-          ),
-        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.green,
-        child: const Text("Add"),
-        onPressed: () =>
-            showDialog(context: context, builder: (_) => const KBForm()),
+      appBar: AppBar(
+        backgroundColor: const Color(0xfff597B3E),
+
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+        ),
+
+        title: Row(
+          children: [
+            Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.white24,
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  'assets/imagens/capivaria.jpeg',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            const SizedBox(width: 12),
+            const Text(
+              "Patricia",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      ),
+
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(right: 10.0),
+        child: FloatingActionButton.extended(
+          backgroundColor: Color(0xfff597B3E),
+
+          icon: Icon(Icons.add, color: Colors.white),
+
+          label: Text(
+            "Novo",
+            style: TextStyle(fontSize: 12, color: Colors.white),
+          ),
+
+          onPressed: () =>
+              showDialog(context: context, builder: (_) => const KBForm()),
+        ),
       ),
       body: controller.loading
           ? const Center(child: CircularProgressIndicator())
