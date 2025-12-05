@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
         senhaErro = false;
       });
 
-      Navigator.of(context).pushReplacementNamed('/chat');
+      Navigator.of(context).pushReplacementNamed('/adm');
     } else {
       setState(() {
         senhaErro = true;
