@@ -13,7 +13,11 @@ import 'src/features/adm/views/adm_page.dart';
 import 'src/features/adm/controllers/knowledge_base_controller.dart';
 import 'src/features/adm/repositories/knowledge_base_repository.dart';
 import 'src/features/adm/services/knowledge_base_service.dart';
+<<<<<<< HEAD
 >>>>>>> 52b5033 (feat: adm-page-)
+=======
+import 'src/features/auth/views/login_page.dart';
+>>>>>>> dc1e871 (feat: adm-reestilizado)
 
 void main() {
   runApp(
@@ -46,12 +50,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+<<<<<<< HEAD
       title: 'CapivarIA',
 <<<<<<< HEAD
       home: const TelaLogin(), //provisório
 =======
       home: const KBListPage(), //provisório
 >>>>>>> 52b5033 (feat: adm-page-)
+=======
+      title: 'Patricia',
+      initialRoute: '/adm',
+      routes: {
+        //  '/': (context) => const LoginPage(), //ajustar
+        '/adm': (context) => const KBListPage(),
+        'chat': (context) => const ChatPage(),
+      },
+>>>>>>> dc1e871 (feat: adm-reestilizado)
     );
   }
 }
