@@ -78,7 +78,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
               const Text(
-                'Tire suas dúvidas com o chatbot inteligente', //trocar nome
+                'Tire suas dúvidas com o chatbot inteligente', //trocaar nome
                 style: TextStyle(fontSize: 14, color: Colors.grey),
               ),
               const SizedBox(height: 20),
