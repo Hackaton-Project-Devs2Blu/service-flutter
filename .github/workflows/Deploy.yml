@@ -46,8 +46,12 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
+          echo "📂 Verificando arquivos na raiz:"
+          ls -la # Debug para provar que o arquivo está aqui
+          
           docker buildx build \
             --platform linux/arm64 \
+            -f Dockerfile \
             -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
             -t $ECR_REGISTRY/$ECR_REPOSITORY:latest \
             --push .
