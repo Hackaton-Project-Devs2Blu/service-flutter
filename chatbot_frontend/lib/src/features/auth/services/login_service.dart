@@ -15,7 +15,7 @@ class AuthService {
       return fakeLogin(email, password);
     }
 
-    final uri = Uri.parse('$baseUrl/auth/login');
+    final uri = Uri.parse('$baseUrl/users');
     final res = await _client.post(
       uri,
       headers: {'Content-Type': 'application/json'},
