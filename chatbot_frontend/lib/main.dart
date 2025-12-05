@@ -1,23 +1,16 @@
+import 'package:chatbot_frontend/src/features/chatbot/views/chat_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'src/features/chatbot/controllers/chat_controller.dart';
 import 'src/features/chatbot/repositories/chat_repository.dart';
 import 'src/features/chatbot/repositories/chat_repository_impl.dart';
 import 'src/features/chatbot/services/ai_service.dart';
-<<<<<<< HEAD
-import 'src/features/auth/views/login_page.dart';
-import 'src/features/auth/views/register_peage.dart';
-=======
 import 'src/features/chatbot/controllers/chat_controller.dart';
 import 'src/features/adm/views/adm_page.dart';
 import 'src/features/adm/controllers/knowledge_base_controller.dart';
 import 'src/features/adm/repositories/knowledge_base_repository.dart';
 import 'src/features/adm/services/knowledge_base_service.dart';
-<<<<<<< HEAD
->>>>>>> 52b5033 (feat: adm-page-)
-=======
 import 'src/features/auth/views/login_page.dart';
->>>>>>> dc1e871 (feat: adm-reestilizado)
 
 void main() {
   runApp(
@@ -33,10 +26,6 @@ void main() {
               ChatController(repository: context.read<ChatRepository>()),
           update: (_, repository, __) => ChatController(repository: repository),
         ),
-
-        Provider(create: (_) => KnowledgeBaseService()),
-        Provider(create: (context) => KnowledgeBaseRepository()),
-        ChangeNotifierProvider(create: (_) => KnowledgeBaseController()),
       ],
       child: const MyApp(),
     ),
@@ -50,22 +39,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-<<<<<<< HEAD
-      title: 'CapivarIA',
-<<<<<<< HEAD
-      home: const TelaLogin(), //provisório
-=======
-      home: const KBListPage(), //provisório
->>>>>>> 52b5033 (feat: adm-page-)
-=======
       title: 'Patricia',
-      initialRoute: '/adm',
+      initialRoute: '/',
       routes: {
-        //  '/': (context) => const LoginPage(), //ajustar
-        '/adm': (context) => const KBListPage(),
-        'chat': (context) => const ChatPage(),
-      },
->>>>>>> dc1e871 (feat: adm-reestilizado)
+        '/': (context) => const LoginPage(),
+        '/chat': (context) => const ChatPage(),
+        '/adm': (context) => const KBListPage(), //provisório
+      }, //provisório
     );
   }
 }
