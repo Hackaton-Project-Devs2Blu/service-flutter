@@ -10,7 +10,11 @@ permissions:
 
 env:
       AWS_REGION: us-west-2
+<<<<<<< HEAD
       ECR_REPOSITORY: app-flutter-hackathon        
+=======
+      ECR_REPOSITORY: service-flutter-hackathon        
+>>>>>>> a96b031 (fix: Update AWS environment variables in Deploy.yml)
       ECS_SERVICE: app-flutter                     
       ECS_CLUSTER: hackathon-project-cluster-hackathon
       ECS_TASK_DEFINITION: flutter-task-hackathon      
@@ -53,7 +57,7 @@ jobs:
             --push .
           
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
-          
+
       - name: 📥 Download Task Definition
         run: |
           aws ecs describe-task-definition --task-definition ${{ env.ECS_TASK_DEFINITION }} \
