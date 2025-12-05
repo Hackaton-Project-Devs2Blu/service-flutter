@@ -4,7 +4,7 @@ import 'package:chatbot_frontend/src/features/auth/models/auth_model_login.dart'
 import 'package:chatbot_frontend/src/features/auth/models/user.dart';
 
 class AuthService {
-  final String? baseUrl;
+  String? baseUrl = "http://localhost:5015/api/csharp";
   final http.Client _client;
 
   AuthService({this.baseUrl, http.Client? client})
