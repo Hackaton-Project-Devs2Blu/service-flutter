@@ -2,36 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:chatbot_frontend/src/features/chatbot/views/chat_page.dart';
 import 'package:chatbot_frontend/src/features/auth/views/register_peage.dart';
 
-class TelaLogin extends StatefulWidget {
-  const TelaLogin({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<TelaLogin> createState() => _TelaLoginState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _TelaLoginState extends State<TelaLogin> {
+class _LoginPageState extends State<LoginPage> {
   bool mostrarSenha = false;
   bool senhaErro = false;
 
   final emailController = TextEditingController();
   final senhaController = TextEditingController();
 
-  final String emailAdmin = "admin@gmail.com";
-  final String senhaAdmin = "123456";
+  final String emailAdmin = "admin@gmail.com"; //admin@gmail.com
+  final String senhaAdmin = "123456"; //123456
 
   static const Color primaryGreen = Color(0xFF57733C);
 
   void validarLogin() {
+    //USUARIO NORMAL CHAT, SE FOR ADMIM PAR A PÁGINA DE ADM
     if (emailController.text.trim() == emailAdmin &&
         senhaController.text.trim() == senhaAdmin) {
       setState(() {
         senhaErro = false;
       });
 
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const ChatPage()),
-      );
+      Navigator.of(context).pushReplacementNamed('/chat');
     } else {
       setState(() {
         senhaErro = true;
@@ -65,7 +63,7 @@ class _TelaLoginState extends State<TelaLogin> {
               ),
               const Text(
                 'Tire suas dúvidas com o chatbot inteligente', //trocar nome
-                style: TextStyle(fontSize: 16, color: Colors.grey),
+                style: TextStyle(fontSize: 14, color: Colors.grey),
               ),
               const SizedBox(height: 20),
               Align(

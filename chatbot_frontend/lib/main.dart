@@ -1,3 +1,4 @@
+import 'package:chatbot_frontend/src/features/chatbot/views/chat_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'src/features/chatbot/controllers/chat_controller.dart';
@@ -26,10 +27,6 @@ void main() {
               ChatController(repository: context.read<ChatRepository>()),
           update: (_, repository, __) => ChatController(repository: repository),
         ),
-
-        Provider(create: (_) => KnowledgeBaseService()),
-        Provider(create: (context) => KnowledgeBaseRepository()),
-        ChangeNotifierProvider(create: (_) => KnowledgeBaseController()),
       ],
       child: const MyApp(),
     ),
@@ -44,12 +41,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Patricia',
-      initialRoute: '/adm',
+      initialRoute: '/',
       routes: {
-        //  '/': (context) => const LoginPage(), //ajustar
-        '/adm': (context) => const KBListPage(),
-        'chat': (context) => const ChatPage(),
-      },
+        '/': (context) => const LoginPage(),
+        '/chat': (context) => const ChatPage(),
+        '/adm': (context) => const KBListPage(), //provisório
+      }, //provisório
     );
   }
 }

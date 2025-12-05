@@ -61,9 +61,6 @@ class _KBListPageState extends State<KBListPage> {
               leading: const Icon(Icons.exit_to_app),
               title: const Text('Sair'),
               onTap: () {
-                Navigator.of(context).pop();
-
-                //Criar as rotas nomeados no main
                 Navigator.of(context).pushReplacementNamed('/');
               },
             ),

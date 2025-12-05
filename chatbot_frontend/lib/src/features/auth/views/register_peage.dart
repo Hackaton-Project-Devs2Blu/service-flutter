@@ -49,10 +49,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   void criarConta() {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (_) => const TelaLogin()),
-    );
+    Navigator.of(context).pushReplacementNamed('/chat');
   }
 
   @override
@@ -82,7 +79,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               const Text(
                 'Tire suas dúvidas com o chatbot inteligente', //trocar nome
-                style: TextStyle(fontSize: 16, color: Colors.grey),
+                style: TextStyle(fontSize: 14, color: Colors.grey),
               ),
               const SizedBox(height: 20),
 
