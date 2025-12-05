@@ -11,6 +11,7 @@ import 'src/features/adm/controllers/knowledge_base_controller.dart';
 import 'src/features/adm/repositories/knowledge_base_repository.dart';
 import 'src/features/adm/services/knowledge_base_service.dart';
 import 'src/features/auth/views/login_page.dart';
+import 'src/features/auth/views/register_peage.dart';
 
 void main() {
   runApp(
