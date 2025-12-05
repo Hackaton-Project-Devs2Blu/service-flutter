@@ -10,7 +10,7 @@ permissions:
 
 env:
       AWS_REGION: us-west-2
-      ECR_REPOSITORY: app-flutter-hackathon       
+      ECR_REPOSITORY: app-flutter-hackathon        
       ECS_SERVICE: app-flutter                     
       ECS_CLUSTER: hackathon-project-cluster-hackathon
       ECS_TASK_DEFINITION: flutter-task-hackathon      
