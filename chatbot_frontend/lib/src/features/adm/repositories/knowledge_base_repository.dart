@@ -3,13 +3,27 @@ import 'package:http/http.dart' as http;
 import '../models/knowledge_base_model.dart';
 
 class KnowledgeBaseRepository {
-  final String baseUrl = ""; //ADD PORTA
+  final String baseUrl =
+      "http://hackathon-project-alb-hackathon-1539304958.us-west-2.elb.amazonaws.com/api/java"; //ADD PORTA
 
   Future<List<KnowledgeBase>> getAll() async {
-    final res = await http.get(Uri.parse("$baseUrl/knowledgebase"));
+    try {
+      final res = await http.get(Uri.parse("$baseUrl/knowledgebase"));
 
-    final List data = jsonDecode(res.body);
-    return data.map((e) => KnowledgeBase.fromJson(e)).toList();
+      if (res.statusCode != 200) {
+        throw Exception("Erro: ${res.statusCode} - ${res.body}");
+      }
+
+      final Map<String, dynamic> decoded = jsonDecode(res.body);
+      final List<dynamic> data = decoded['content'] ?? [];
+
+      return data
+          .map((e) => KnowledgeBase.fromJson(e as Map<String, dynamic>))
+          .toList();
+    } catch (e) {
+      print("Erro ao buscar dados: $e");
+      rethrow;
+    }
   }
 
   Future<void> create(Map<String, dynamic> body) async {

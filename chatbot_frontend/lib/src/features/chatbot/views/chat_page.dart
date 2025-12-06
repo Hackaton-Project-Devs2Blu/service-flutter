@@ -117,26 +117,35 @@ class _ChatPageState extends State<ChatPage> {
               padding: EdgeInsets.all(8),
               child: CircularProgressIndicator(),
             ),
-
-          Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  controller: controller,
-                  decoration: const InputDecoration(
-                    hintText: "Digite sua pergunta...",
-                    contentPadding: EdgeInsets.all(16),
+          Padding(
+            padding: const EdgeInsetsGeometry.symmetric(
+              horizontal: 16,
+              vertical: 8,
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: controller,
+                    decoration: InputDecoration(
+                      hintText: "Digite sua pergunta...",
+                      contentPadding: EdgeInsets.all(16),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Color(0XFFf597B3E)),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              IconButton(
-                icon: const Icon(Icons.send),
-                onPressed: () {
-                  chat.sendMessage(controller.text);
-                  controller.clear();
-                },
-              ),
-            ],
+                IconButton(
+                  icon: const Icon(Icons.send),
+                  onPressed: () {
+                    chat.sendMessage(controller.text);
+                    controller.clear();
+                  },
+                ),
+              ],
+            ),
           ),
         ],
       ),
