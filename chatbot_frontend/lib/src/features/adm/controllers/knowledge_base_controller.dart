@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/knowledge_base_model.dart';
 import '../services/knowledge_base_service.dart';
+import '../models/knowledge_base_model_dto.dart';
 
 class KnowledgeBaseController extends ChangeNotifier {
   final service = KnowledgeBaseService();
@@ -9,22 +10,24 @@ class KnowledgeBaseController extends ChangeNotifier {
   bool loading = false;
 
   Future<void> fetch() async {
-    loading = true;
-    notifyListeners();
+    try {
+      loading = true;
+      notifyListeners();
 
-    items = await service.load();
-
-    loading = false;
-    notifyListeners();
+      items = await service.load();
+    } finally {
+      loading = false;
+      notifyListeners();
+    }
   }
 
-  Future<void> create(Map<String, dynamic> body) async {
-    await service.create(body);
+  Future<void> create(CreateKnowledgeBaseDto dto) async {
+    await service.create(dto);
     await fetch();
   }
 
-  Future<void> update(int id, Map<String, dynamic> body) async {
-    await service.update(id, body);
+  Future<void> update(int id, CreateKnowledgeBaseDto dto) async {
+    await service.update(id, dto);
     await fetch();
   }
 

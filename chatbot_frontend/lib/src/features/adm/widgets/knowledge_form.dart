@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../controllers/knowledge_base_controller.dart';
 import '../models/knowledge_base_model.dart';
+import '../models/knowledge_base_model_dto.dart';
 
 class KBForm extends StatefulWidget {
   final KnowledgeBase? kb;
@@ -15,7 +16,8 @@ class KBForm extends StatefulWidget {
 class _KBFormState extends State<KBForm> {
   final titulo = TextEditingController();
   final categoria = TextEditingController();
-  final conteudo = TextEditingController();
+  final pergunta = TextEditingController();
+  final resposta = TextEditingController();
 
   @override
   void initState() {
@@ -23,14 +25,13 @@ class _KBFormState extends State<KBForm> {
     if (widget.kb != null) {
       titulo.text = widget.kb!.titulo;
       categoria.text = widget.kb!.categoria;
-      conteudo.text = widget.kb!.conteudo;
+      pergunta.text = widget.kb!.pergunta;
+      resposta.text = widget.kb!.resposta;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<KnowledgeBaseController>();
-
     return AlertDialog(
       title: Text(widget.kb == null ? "Adicionar" : "Editar"),
       content: SizedBox(
@@ -47,8 +48,13 @@ class _KBFormState extends State<KBForm> {
               decoration: const InputDecoration(labelText: "Categoria"),
             ),
             TextField(
-              controller: conteudo,
-              decoration: const InputDecoration(labelText: "Conteúdo"),
+              controller: pergunta,
+              decoration: const InputDecoration(labelText: "Pergunta"),
+            ),
+            TextField(
+              controller: resposta,
+              decoration: const InputDecoration(labelText: "Resposta"),
+              maxLines: 3,
             ),
           ],
         ),
@@ -58,20 +64,25 @@ class _KBFormState extends State<KBForm> {
           child: const Text("Cancelar"),
           onPressed: () => Navigator.pop(context),
         ),
+
+        // 🔥 BOTÃO CORRIGIDO
         ElevatedButton(
           child: const Text("Salvar"),
-          onPressed: () {
-            final body = {
-              "titulo": titulo.text,
-              "categoria": categoria.text,
-              "conteudo": conteudo.text,
-              "atualizado_por": 1, // ID do admin logado
-            };
+          onPressed: () async {
+            final controller = context.read<KnowledgeBaseController>();
+
+            final dto = CreateKnowledgeBaseDto(
+              titulo: titulo.text,
+              categoria: categoria.text,
+              pergunta: pergunta.text,
+              resposta: resposta.text,
+              updatedByUserId: 1, // 🔥 trocar pelo ID real
+            );
 
             if (widget.kb == null) {
-              controller.create(body);
+              await controller.create(dto);
             } else {
-              controller.update(widget.kb!.id, body);
+              await controller.update(widget.kb!.id, dto);
             }
 
             Navigator.pop(context);
