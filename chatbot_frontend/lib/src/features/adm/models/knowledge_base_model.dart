@@ -22,9 +22,9 @@ class KnowledgeBase {
       id: json['id'],
       titulo: json['titulo'],
       categoria: json['categoria'],
-      conteudo: json['conteudo'],
-      atualizadoEm: json['atualizado_em'],
-      atualizadoPor: json['atualizado_por'],
+      conteudo: json['resposta'],
+      atualizadoEm: json['updatedAt'],
+      atualizadoPor: 0,
     );
   }
 
