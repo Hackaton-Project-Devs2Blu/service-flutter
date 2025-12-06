@@ -2,7 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class AIService {
-  final String baseUrl = ""; // CHAVE API
+  final String baseUrl =
+      "http://hackathon-project-alb-hackathon-1539304958.us-west-2.elb.amazonaws.com/api/csharp/chat"; // CHAVE API
 
   Future<String> sendMessage(String message) async {
     final url = Uri.parse(baseUrl);
