@@ -20,6 +20,6 @@ class AIService {
 
     final json = jsonDecode(response.body);
 
-    return json["reply"] ?? "Resposrta vazia da API";
+    return json["response"] ?? "Resposrta vazia da API";
   }
 }
