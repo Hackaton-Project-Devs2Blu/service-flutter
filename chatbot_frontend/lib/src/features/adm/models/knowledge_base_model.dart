@@ -1,18 +1,18 @@
-import 'dart:convert';
-
 class KnowledgeBase {
   final int id;
   final String titulo;
+  final String pergunta;
+  final String resposta;
   final String categoria;
-  final String conteudo;
-  final String atualizadoEm;
-  final int atualizadoPor;
+  final DateTime atualizadoEm;
+  final String atualizadoPor;
 
   KnowledgeBase({
     required this.id,
     required this.titulo,
+    required this.pergunta,
+    required this.resposta,
     required this.categoria,
-    required this.conteudo,
     required this.atualizadoEm,
     required this.atualizadoPor,
   });
@@ -21,18 +21,21 @@ class KnowledgeBase {
     return KnowledgeBase(
       id: json['id'],
       titulo: json['titulo'],
+      pergunta: json['pergunta'],
+      resposta: json['resposta'],
       categoria: json['categoria'],
-      conteudo: json['resposta'],
-      atualizadoEm: json['updatedAt'],
-      atualizadoPor: 0,
+      atualizadoEm: DateTime.parse(json['updatedAt']),
+      atualizadoPor: json['updatedByName'],
     );
   }
 
   Map<String, dynamic> toJson() => {
     "id": id,
     "titulo": titulo,
+    "pergunta": pergunta,
+    "resposta": resposta,
     "categoria": categoria,
-    "conteudo": conteudo,
-    "atualizado_por": atualizadoPor,
+    "updatedAt": atualizadoEm,
+    "updatedByName": atualizadoPor,
   };
 }

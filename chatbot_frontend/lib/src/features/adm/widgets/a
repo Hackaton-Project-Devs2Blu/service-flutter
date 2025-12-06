@@ -1,0 +1,11 @@
+
+[ERROR:flutter/runtime/dart_vm_initializer.cc(40)] Unhandled Exception: Exception: Erro ao criar: 500 - {"timestamp":"2025-12-06T03:22:32.839+00:00","status":500,"error":"Internal Server Error","path":"/api/java/knowledgebase"}
+#0      KnowledgeBaseRepository.create (package:chatbot_frontend/src/features/adm/repositories/knowledge_base_repository.dart:32:7)
+knowledge_base_repository.dart:32
+<asynchronous suspension>
+#1      KnowledgeBaseController.create (package:chatbot_frontend/src/features/adm/controllers/knowledge_base_controller.dart:24:5)
+knowledge_base_controller.dart:24
+<asynchronous suspension>
+#2      _KBFormState.build.<anonymous closure> (package:chatbot_frontend/src/features/adm/widgets/knowledge_form.dart:82:15)
+knowledge_form.dart:82
+<asynchronous suspension>
